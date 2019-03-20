@@ -97,7 +97,7 @@ func (m GelfMessage) getExtraFields() (json.RawMessage, error) {
 			extra[name[4:]] = label
 		}
 		if len(name) > 18 && name[0:18] == "io.kubernetes.pod." {
-			extra[strings.ReplaceAll(name[14:], ".", "_")] = label
+			extra[strings.Replace(name[14:], ".", "_", -1)] = label
 		}
 	}
 	swarmnode := m.Container.Node
